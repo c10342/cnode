@@ -79,7 +79,7 @@ const port = process.env.PORT || 9000;
 const host = process.env.HOST || '0.0.0.0'
 
 app.listen(port,host,function () {
-    console.log("http://localhost:9000")
+    console.log(`http://${host}:${port}`)
 })
 
 // accesstoken:54033715-3491-410e-a95e-567516aab280

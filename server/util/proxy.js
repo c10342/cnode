@@ -5,16 +5,12 @@ const queryString=require('query-string')
 
 const baseUrl = 'https://cnodejs.org/api/v1'
 
-module.exports = function(req,res,next){
+module.exports = function(req,res){
     const path = req.path;
-    const user = req.session.user || {};
-
     // 处理get请求过来的参数
     let query = Object.assign({},req.query)
-
     // 处理post参数
     let data = queryString.stringify(Object.assign({},req.body))
-
     axios({
         method:req.method,
         url:`${baseUrl}${path}`,

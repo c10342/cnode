@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input,Icon,Button,Radio} from 'antd'
+import {Input,Icon,Button,Radio,message} from 'antd'
 import style from './style.less'
 import {inject,observer} from 'mobx-react'
 import PropTypes from 'prop-types'
@@ -42,7 +42,7 @@ class TopicCreate extends React.Component {
                 <Button onClick={()=>this.handleClick()} type='primary'>回复</Button>
                 <div style={{height:30}}></div>
                 <div style={{color:"red"}}>
-                    所有话题都会被发布到测试tab下
+                    所有话题都会被发布到测试tab下,并且每天只能发布七次
                 </div>
             </div>
         );
@@ -61,6 +61,9 @@ class TopicCreate extends React.Component {
 
         this.props.topicState.createTopic(this.state.title,this.state.content,this.props.user.accessToken).then(res=>{
             this.props.history.push(`/TopicDetail/${res.topic_id}`)
+        }).catch(err=>{
+            console.log(err);
+            message.error('不能发布，频率限制')
         })
     }
     componentDidMount(){
