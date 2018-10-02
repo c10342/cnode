@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%%- meta %>
+    <%%- title %>
+    <%%- style %>
+    <%%- link %>
+</head>
+<body>
+<!--同步服务器与客户端的mobx-->
+<!--使用ejs-compiled-loader解析后就变成&lt;% appString %&gt;-->
+<div id="root"><%%- appString %></div>
+<script>
+    window.__INITIAL__STATE = <%%- initialState%>
+</script>
+</body>
+</html>
