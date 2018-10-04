@@ -29,14 +29,18 @@ export class TopicState{
     @action getTopDetail(id){
         this.isLoading=true
         this.topDetail=[]
-        get(`/topic/${id}`,{mdrender:false}).then(res=>{
-            if(res.success){
-                this.repliesArr=res.data.replies.reverse()
-                this.topDetail=res.data
-            }
-            this.isLoading=false
-        }).catch(err=>{
-            this.isLoading=false
+        return new Promise((resolve, reject) => {
+            get(`/topic/${id}`,{mdrender:false}).then(res=>{
+                if(res.success){
+                    this.repliesArr=res.data.replies.reverse()
+                    this.topDetail=res.data
+                }
+                this.isLoading=false
+                resolve()
+            }).catch(err=>{
+                this.isLoading=false
+                reject()
+            })
         })
 
     }
@@ -44,13 +48,17 @@ export class TopicState{
     @action getTopicsData(tab){
         this.isLoading=true
         this.topics=[]
-        get('/topics',{mdrender:false,tab}).then(res=>{
-            if(res.success){
-                this.topics=res.data.map(item=>new Topic(item))
-            }
-            this.isLoading=false
-        }).catch(err=>{
-            this.isLoading=false
+        return new Promise((resolve, reject) => {
+            get('/topics',{mdrender:false,tab}).then(res=>{
+                if(res.success){
+                    this.topics=res.data.map(item=>new Topic(item))
+                }
+                this.isLoading=false
+                resolve()
+            }).catch(err=>{
+                this.isLoading = false;
+                reject()
+            })
         })
     }
 

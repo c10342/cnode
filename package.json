@@ -13,8 +13,8 @@
     "clear": "rimraf dist",
     "build": "npm run clear && npm run build:client && npm run build:server",
     "start": "cross-env NODE_ENV=production node ./server/server.js",
-    "upload":"node ./build/upload.js",
-    "deploy":"npm run build && npm run upload"
+    "upload": "node ./build/upload.js",
+    "deploy": "npm run build && npm run upload"
   },
   "keywords": [],
   "author": "",

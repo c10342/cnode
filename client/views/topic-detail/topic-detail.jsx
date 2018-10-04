@@ -90,9 +90,11 @@ class TopicDetail extends React.Component {
             message.error('内容不能为空')
             return
         }
+        const hide = message.loading('发表中', 0);
         const user = this.props.user
         const accessToken = user.accessToken
         this.props.topicState.replies(accessToken,this.state.newReply,this.props.match.params.id).then(()=>{
+            hide()
             message.success('发表成功')
         }).catch(err=>console.log(err))
     }
@@ -102,7 +104,9 @@ class TopicDetail extends React.Component {
             getContainer:()=>this.div,
         });
         const id = this.props.match.params.id
-        this.props.topicState.getTopDetail(id)
+        this.props.topicState.getTopDetail(id).catch(()=>{
+            this.props.history.push('/err')
+        })
     }
     login(){
         this.props.history.push('/user/login')

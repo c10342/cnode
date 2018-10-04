@@ -24,7 +24,9 @@ class TopicList extends React.Component {
     }
     componentDidMount(){
         const tab = this.getTab(this.props.location.search)
-        this.props.topicState.getTopicsData(tab)
+        this.props.topicState.getTopicsData(tab).catch(()=>{
+            this.props.history.push('/err')
+        })
     }
     // 组件接收props参数时
     componentWillReceiveProps(newProps){
@@ -32,7 +34,9 @@ class TopicList extends React.Component {
             return;
         }
         const tab = this.getTab(newProps.location.search)
-        this.props.topicState.getTopicsData(tab)
+        this.props.topicState.getTopicsData(tab).catch(()=>{
+            this.props.history.push('/err')
+        })
     }
     getTab(str){
         let search = queryString.parse(str)
