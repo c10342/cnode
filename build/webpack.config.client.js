@@ -94,7 +94,7 @@ if(isDev){
         ]
     }
     config.output.filename = '[name].[chunkhash].js'
-    config.output.publicPath=cdnConfig.host
+    // config.output.publicPath=cdnConfig.host
     config.plugins.push(
         // 混淆压缩js代码
         // new webpack.optimize.UglifyJsPlugin(),

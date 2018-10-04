@@ -96,7 +96,11 @@ class TopicDetail extends React.Component {
         this.props.topicState.replies(accessToken,this.state.newReply,this.props.match.params.id).then(()=>{
             hide()
             message.success('发表成功')
-        }).catch(err=>console.log(err))
+        }).catch(err=>{
+            console.log(err)
+            hide()
+            message.error('发表失败')
+        })
     }
 
     componentDidMount(){

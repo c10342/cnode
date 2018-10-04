@@ -1,5 +1,4 @@
 import React from 'react';
-import style from './style.less'
 
 class Err extends React.Component {
     constructor(props) {
@@ -8,7 +7,8 @@ class Err extends React.Component {
 
     render() {
         return (
-            <div className={style.container}>
+            <div>
+                <p style={{fontSize:24,fontWeight:'bold',lineHeight:'300px',textAlign:'center'}}>请求的页面出错</p>
             </div>
         );
     }
